@@ -1,15 +1,15 @@
-const response = await fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=experimental') 
-const data = await response.json()
+try{
+    const response = await fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=experimental') 
+    const data = await response.json()
     // set the background image
     document.body.style.backgroundImage = `url(${data.urls.full})`;
     // Set the authors name
-        document.getElementById('author').textContent = `By: ${data.user.name}`;
+    document.getElementById('author').textContent = `By: ${data.user.name}`;
+} catch (err){
+    document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1520199144204-310fca6d9fe0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTI5Mjc1MTh8&ixlib=rb-4.0.3&q=80&w=1080)`
+    document.getElementById('author').textContent = `By: Kev Costello`;
+}
 
-    // .catch(err => {
-    //     document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1520199144204-310fca6d9fe0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTI5Mjc1MTh8&ixlib=rb-4.0.3&q=80&w=1080)`
-    //     const imageAuthor = document.getElementById('author');
-    //     imageAuthor.textContent = `By: Kev Costello`;
-    // })
 
 
 
