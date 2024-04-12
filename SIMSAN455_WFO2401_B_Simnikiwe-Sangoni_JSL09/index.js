@@ -39,22 +39,26 @@ function updateTime(){
 
 setInterval(updateTime, 1000);
 
-navigator.geolocation.getCurrentPosition(async position => {
-    // console.log(position)
-    const weatherRes = await fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`) 
-        if (!weatherRes.ok) {
-            throw Error("Weather data not available")
-        }
+try{
+    navigator.geolocation.getCurrentPosition(async position => {
+        // console.log(position)
+        const weatherRes = await fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`) 
+            if (!weatherRes.ok) {
+                throw Error("Weather data not available")
+            }
         const data2 = await weatherRes.json()
-            // console.log(data)
-            const weatherIconURL = `https://openweathermap.org/img/wn/${data2.weather[0].icon}@2x.png`
-            document.getElementById("weather").innerHTML = `
-                <img src=${weatherIconURL} />
-                <p class="weather-temp">${Math.round(data2.main.temp)}°</p>
-                <p class="weather-city">${data2.name}</p>
+        // console.log(data)
+        const weatherIconURL = `https://openweathermap.org/img/wn/${data2.weather[0].icon}@2x.png`
+        document.getElementById("weather").innerHTML = `
+            <img src=${weatherIconURL} />
+            <p class="weather-temp">${Math.round(data2.main.temp)}°</p>
+            <p class="weather-city">${data2.name}</p>
             `
-             // .catch(err => console.error(err))
         });
+} catch(error2){
+    console.error(error2)
+}
+
        
 
 
