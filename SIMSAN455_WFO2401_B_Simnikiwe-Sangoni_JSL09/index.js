@@ -11,10 +11,8 @@ try{
 }
 
 
-
-
-
-const res = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
+try{
+    const res = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
 if (!res.ok) {
     throw Error("Something went wrong")
 }
@@ -26,10 +24,11 @@ const data1 = await res.json()
     document.getElementById("crypto").innerHTML += `
         <p> 🎯: R${data1.market_data.current_price.zar}</p>
         <p> 👆🏽: R${data1.market_data.high_24h.zar}</p>
-        <p> 👇🏽: R${data1.market_data.low_24h.zar}</p>
-        `
+        <p> 👇🏽: R${data1.market_data.low_24h.zar}</p>`
+} catch (error){
+    console.error(error)
+}
 
-    // .catch(err => console.error(err))
 
 function updateTime(){
     const date = new Date();
