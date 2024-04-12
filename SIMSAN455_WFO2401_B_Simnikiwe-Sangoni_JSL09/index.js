@@ -1,4 +1,4 @@
-try{
+try {
     const response = await fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=experimental') 
     const data = await response.json()
     // set the background image
@@ -11,7 +11,7 @@ try{
 }
 
 
-try{
+try {
     const res = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
 if (!res.ok) {
     throw Error("Something went wrong")
@@ -39,7 +39,7 @@ function updateTime(){
 
 setInterval(updateTime, 1000);
 
-try{
+try {
     navigator.geolocation.getCurrentPosition(async position => {
         // console.log(position)
         const weatherRes = await fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`) 
