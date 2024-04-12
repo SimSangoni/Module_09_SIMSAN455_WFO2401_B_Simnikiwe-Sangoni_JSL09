@@ -1,4 +1,4 @@
-fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=experimental') 
+await fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=experimental') 
     .then(response => response.json())
     .then(data => {
         // console.log(data.urls.regular)
